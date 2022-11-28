@@ -1,7 +1,79 @@
-.sidebarContainer{
-  .sidebarItem {
-    .sidebarTitle {
+@use "../../App" as App;
 
+$themeColor: #fff;
+
+.sideMenuContainer {
+  width: 350px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1610;
+  height: 100vh;
+  background: #222;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  -webkit-transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
+  -o-transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
+  -moz-transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
+  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
+  overflow: hidden;
+  &.active {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .innerWrapper {
+    padding: 4.5rem 1rem;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #fff;
+    text-align: left;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .sideNav {
+    .navbarNav {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+      .navItem {
+        transform: translateY(0);
+        opacity: 1;
+        display: block;
+        margin: 8px 0;
+        a {
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
     }
+  }
+
+  .btnClose {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    -webkit-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    margin-right: 1.5rem;
+    margin-top: 0;
+    right: 10px;
+    top: 10px;
+    z-index: 12;
+    cursor: pointer;
   }
 }

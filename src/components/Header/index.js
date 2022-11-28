@@ -4,7 +4,9 @@ import {SOCIAL_LIST} from "../../constant/social";
 import TopBar from "../TopBar";
 import {useEffect} from "react";
 
-const Header = () => {
+const Header = ({
+                    handleToggleMenu
+                }) => {
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -13,7 +15,7 @@ const Header = () => {
 
     const handleScroll = () => {
         let scrollToTopBtn = document.querySelector("#STICKY_HEADER");
-        if (window.scrollY > 190) {
+        if (window.scrollY > 150) {
             scrollToTopBtn.classList.add("fixedDiv")
         } else {
             scrollToTopBtn.classList.remove("fixedDiv")
@@ -28,6 +30,8 @@ const Header = () => {
                 return s.facebookBg;
             case "INSTAGRAM":
                 return s.instagramBg;
+            case "LINKED_IN":
+                return s.linkedInBg;
             default:
                 return "";
         }
@@ -39,7 +43,9 @@ const Header = () => {
                 <div className={`container`}>
                     <div className={`${s.wrapperBlock}`}>
                         <div className={`${s.topNavLeft}`}>
-                            <Hamburger/>
+                            <Hamburger
+                                handleToggleMenu={handleToggleMenu}
+                            />
                         </div>
                         <div className={`${s.topNavRight}`}>
                             <ul className={`${s.iconList}`}>
@@ -57,12 +63,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-
             <TopBar/>
-
-            <div>
-
-            </div>
         </header>
     )
 }

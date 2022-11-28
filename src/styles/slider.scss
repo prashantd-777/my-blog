@@ -1,0 +1,34 @@
+.slick-slide img {
+  margin: auto;
+  border-radius: 20px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.slick-slider .slick-arrow:before {
+  color: #007bff !important;
+  font-size: 30px !important;
+}
+
+.slick-dots li button:before {
+  width: 12px !important;
+  height: 12px !important;
+  font-size: 12px !important;
+  border: 1px solid #007bff;
+  content: "" !important;
+  border-radius: 50%;
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  background: #007bff;
+}
+
+.slick-dots {
+  bottom: -50px !important;
+}
+
+.slick-slide {
+  padding-left: 15px;
+}
+

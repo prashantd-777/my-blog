@@ -1,4 +1,9 @@
-
+main {
+  position: relative;
+  background: #eee;
+  min-height: 100vh;
+  overflow: auto;
+}
 .fixedDiv {
   position: fixed;
   width: 100%;

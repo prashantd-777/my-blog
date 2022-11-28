@@ -18,4 +18,10 @@ export const SOCIAL_LIST = [
         icon: <i className='fa fa-instagram text-white fs-5'></i>,
         href: "#"
     },
+    {
+        id: 4,
+        name: "LINKED_IN",
+        icon: <i className='fa fa-linkedin text-white fs-5'></i>,
+        href: "#"
+    },
 ]
