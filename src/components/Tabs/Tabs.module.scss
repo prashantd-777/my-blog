@@ -1,0 +1,36 @@
+
+.tabsContainer {
+  width: 100%;
+  position: relative;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      padding-left: 10px;
+      button {
+        padding: 5px 10px;
+        border: 1px solid #e5e5e5;
+        margin-bottom: 20px;
+        background-color: #fff;
+        line-height: 38px;
+        border-radius: 500px;
+        font-size: .875rem;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+        text-transform: uppercase;
+        transition: .3s ease-in-out;
+        color: #333;
+        min-width: 100px;
+      }
+      button:hover {
+        background-color: #0056b3;
+        border: 1px solid #0056b3;
+        color: #fff;
+      }
+    }
+  }
+}

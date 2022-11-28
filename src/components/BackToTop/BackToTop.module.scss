@@ -1,0 +1,40 @@
+
+$themeColor: #007bff;
+$back-to-top__button-color: #007bff;
+$back-to-top__icon-color: white;
+
+.backToTopContainer {
+  background-color: $back-to-top__button-color;
+  text-decoration: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  z-index: 999;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 100%;
+  box-shadow: 0 4px 16px 0 rgba(black,0.4);
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all .5s ease;
+
+  &:hover {
+    background-color: lighten($back-to-top__button-color, 12%);
+  }
+
+  &:active {
+    box-shadow: none;
+    background-color: darken($back-to-top__button-color, 12%);
+  }
+
+  svg.iconArrowUp {
+    fill: $back-to-top__icon-color;
+    width: 24px;
+    height: 24px;
+  }
+}

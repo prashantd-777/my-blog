@@ -2,25 +2,10 @@ import s from "./Header.module.scss";
 import Hamburger from "../Hamburger";
 import {SOCIAL_LIST} from "../../constant/social";
 import TopBar from "../TopBar";
-import {useEffect} from "react";
 
 const Header = ({
                     handleToggleMenu
                 }) => {
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll, false)
-    }, []);
-
-    const handleScroll = () => {
-        let scrollToTopBtn = document.querySelector("#STICKY_HEADER");
-        if (window.scrollY > 150) {
-            scrollToTopBtn.classList.add("fixedDiv")
-        } else {
-            scrollToTopBtn.classList.remove("fixedDiv")
-        }
-    }
 
     const getSocialColorName = (key) => {
         switch (key) {
