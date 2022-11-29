@@ -1,14 +1,18 @@
 import s from "./home.module.scss";
-import Posts from "../../components/Posts";
-import Sidebar from "../../components/Sidebar";
+import Carousel from "../../components/Carousel";
+import Tabs from "../../components/Tabs";
+import CardContainer from "../../components/CardContainer";
+import Footer from "../../components/Footer";
 
 const Home = () => {
     return (
         <>
-            <div className={`${s.homeContainer}`}>
-                <Posts />
-                <Sidebar />
-            </div>
+            <section className={`${s.homeContainer}`}>
+                <Carousel />
+                <Tabs />
+                <CardContainer />
+                <Footer />
+            </section>
         </>
     )
 }

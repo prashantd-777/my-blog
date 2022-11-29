@@ -1,5 +1,5 @@
-import s from "./Sidebar.module.scss";
 import React, {useEffect, useRef} from "react";
+import s from "./Sidebar.module.scss";
 
 const Sidebar = ({
                      isMenuOpen = false,
