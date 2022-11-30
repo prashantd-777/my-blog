@@ -2,7 +2,10 @@ import s from "./Login.module.scss";
 import { Formik, Field, Form } from 'formik';
 import {LOGIN_FORM} from "../../validation-schema";
 
-const INITIAL_VALUES = { email: '', password: "" };
+const INITIAL_VALUES = {
+    email: '',
+    password: ""
+};
 
 const Login = () => {
     const handleSubmit = (values, { setSubmitting }) => {
@@ -23,26 +26,31 @@ const Login = () => {
                             onSubmit={handleSubmit}
                             validationSchema={LOGIN_FORM}
                         >
-                            {(formik, isSubmitting) => (
+                            {({
+                                  values,
+                                  touched,
+                                  errors,
+                                  isValid,
+                              }, isSubmitting) => (
                                 <Form>
                                     <div className={`form-group ${s.formGroup}`}>
                                         <label htmlFor="email">Enter Your Email Address</label>
-                                        <Field name="email" className={(formik.touched.email && formik.errors.email) ? 'form-control is-invalid' : 'form-control'} type="email" />
-                                        {formik.touched.email && formik.errors.email ? (
-                                            <div className="invalid-feedback">{formik.errors.email}</div>
+                                        <Field name="email" className={(touched.email && errors.email) ? 'form-control is-invalid' : 'form-control'} type="email" />
+                                        {touched.email && errors.email ? (
+                                            <div className="invalid-feedback">{errors.email}</div>
                                         ) : null}
                                     </div>
 
                                     <div className={`form-group ${s.formGroup}`}>
                                         <label htmlFor="password">Enter Your Password</label>
-                                        <Field name="password" className={(formik.touched.password && formik.errors.password) ? 'form-control is-invalid' : 'form-control'} type="password" />
-                                        {formik.touched.password && formik.errors.password ? (
-                                            <div className="invalid-feedback">{formik.errors.password}</div>
+                                        <Field name="password" className={(touched.password && errors.password) ? 'form-control is-invalid' : 'form-control'} type="password" />
+                                        {touched.password && errors.password ? (
+                                            <div className="invalid-feedback">{errors.password}</div>
                                         ) : null}
                                     </div>
 
                                     <div className={`form-group ${s.formGroup}`}>
-                                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Please wait..." : "Submit"}</button>
+                                        <button type="submit" className="w-100 btn btn-primary" disabled={isSubmitting || !isValid}>{isSubmitting ? "Please wait..." : "Submit"}</button>
                                     </div>
                                 </Form>
                             )}

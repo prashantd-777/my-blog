@@ -18,6 +18,6 @@ export const NAVBAR_LIST = [
     },
     {
         id: 5,
-        name: "Logout"
+        name: "Login"
     }
 ]

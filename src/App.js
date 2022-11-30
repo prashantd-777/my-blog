@@ -2,7 +2,6 @@ import './App.scss';
 import {
     Route, BrowserRouter, Routes
 } from "react-router-dom";
-import Home from "./Pages/home";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/dashboard";
 
