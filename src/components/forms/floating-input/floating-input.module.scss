@@ -1,0 +1,68 @@
+.formLabelGroupContainer {
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    color: #b3b3b3;
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 1.5;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  input {
+    font-size: 1rem;
+    outline: none;
+    background: #edf2f5;
+    border: 1px solid #edf2f5;
+    &:not(:placeholder-shown) {
+     padding: 0.75rem;
+
+      ~ label {
+        padding: 0;
+        font-size: 0.875rem;
+        top: -0.6rem;
+        left: 0.75rem;
+        background-color: #fff;
+      }
+    }
+
+    &::-webkit-input-placeholder {
+      color: transparent;
+    }
+    &:-moz-placeholder {
+      color: transparent;
+    }
+    &::-moz-placeholder {
+      color: transparent;
+    }
+    &:-ms-input-placeholder {
+      color: transparent;
+    }
+  }
+
+  .isInvalid {
+    background: #fff;
+    &:placeholder-shown {
+      ~ label {
+        color: #dc3545;
+      }
+    }
+  }
+
+  input:focus, .is-invalid:focus {
+    outline: none;
+    box-shadow: none !important;
+  }
+}
+
+.formLabelGroupContainer > input, .formLabelGroupContainer > label {
+  padding: 0.75rem;
+}
+
+.formLabelGroupContainer .errorText {
+  font-size: 12px;
+}

@@ -1,6 +1,12 @@
 import s from "./Login.module.scss";
-import { Formik, Field, Form } from 'formik';
+import {Formik, Form} from 'formik';
 import {LOGIN_FORM} from "../../validation-schema";
+import FloatingInput from "../../components/forms/floating-input";
+import {LOGIN_IMG, REGISTER_IMG} from "../../constant/cdnAssetPath";
+import FormGroup from "../../components/forms/form-group";
+import Button from "../../components/Button";
+import {Link} from "react-router-dom";
+import Checkbox from "../../components/forms/Checkbox";
 
 const INITIAL_VALUES = {
     email: '',
@@ -8,7 +14,7 @@ const INITIAL_VALUES = {
 };
 
 const Login = () => {
-    const handleSubmit = (values, { setSubmitting }) => {
+    const handleSubmit = (values, {setSubmitting}) => {
         setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -16,53 +22,86 @@ const Login = () => {
     }
 
     return (
-        <div className={`${s.loginContainer}`}>
-            <div className={`row ${s.loginBlock}`}>
-                <div className={`col-xl-4 col-lg-5 col-md-6 order-sm-2`}>
-                    <div className={`${s.formContainer} mb-5`}>
-                        <h6 className={"mb-4"}>Log In to Your Account</h6>
-                        <Formik
-                            initialValues={{...INITIAL_VALUES}}
-                            onSubmit={handleSubmit}
-                            validationSchema={LOGIN_FORM}
-                        >
-                            {({
-                                  values,
-                                  touched,
-                                  errors,
-                                  isValid,
-                              }, isSubmitting) => (
-                                <Form>
-                                    <div className={`form-group ${s.formGroup}`}>
-                                        <label htmlFor="email">Enter Your Email Address</label>
-                                        <Field name="email" className={(touched.email && errors.email) ? 'form-control is-invalid' : 'form-control'} type="email" />
-                                        {touched.email && errors.email ? (
-                                            <div className="invalid-feedback">{errors.email}</div>
-                                        ) : null}
-                                    </div>
+        <section className={`w-100 ${s.loginSection}`}>
+            <div className={`container`}>
+                <div className={`row`}>
+                    <div className={`col-md-6`}>
+                        <img src={LOGIN_IMG} alt={"Image"}/>
+                    </div>
+                    <div className={`col-md-6`}>
+                        <div className={`row justify-content-center ${s.formContainer}`}>
+                            <div className={`col-xl-8 col-lg-9 col-md-10`}>
+                                <h4>Welcome back!</h4>
+                                <p className={"mb-4"}>
+                                    Enter your email address and password to access panel
+                                </p>
+                                <Formik
+                                    initialValues={{...INITIAL_VALUES}}
+                                    onSubmit={handleSubmit}
+                                    validationSchema={LOGIN_FORM}
+                                >
+                                    {({
+                                          values,
+                                          touched,
+                                          errors,
+                                          isValid,
+                                          handleChange,
+                                          handleBlur
+                                      }, isSubmitting) => (
+                                        <Form>
+                                            <FloatingInput
+                                                id={"email"}
+                                                label={"Email Address"}
+                                                type={"email"}
+                                                handleChange={handleChange}
+                                                handleBlur={handleBlur}
+                                                touched={touched}
+                                                errors={errors}
+                                                isRequired={true}
+                                                autofocus
+                                            />
 
-                                    <div className={`form-group ${s.formGroup}`}>
-                                        <label htmlFor="password">Enter Your Password</label>
-                                        <Field name="password" className={(touched.password && errors.password) ? 'form-control is-invalid' : 'form-control'} type="password" />
-                                        {touched.password && errors.password ? (
-                                            <div className="invalid-feedback">{errors.password}</div>
-                                        ) : null}
-                                    </div>
+                                            <FloatingInput
+                                                id={"password"}
+                                                label={"Password"}
+                                                type={"password"}
+                                                handleChange={handleChange}
+                                                handleBlur={handleBlur}
+                                                touched={touched}
+                                                errors={errors}
+                                                isRequired={true}
+                                            />
 
-                                    <div className={`form-group ${s.formGroup}`}>
-                                        <button type="submit" className="w-100 btn btn-primary" disabled={isSubmitting || !isValid}>{isSubmitting ? "Please wait..." : "Submit"}</button>
-                                    </div>
-                                </Form>
-                            )}
-                        </Formik >
-                        <div className={"text-center"}>
-                            <span>Don’t have an account?</span>{" "}
-                            <a href="#" >Register Now</a>
+                                            <FormGroup classes={`d-flex justify-content-between ${s.forgotPassword}`}>
+                                                <div>
+                                                    <Checkbox
+                                                        id={"REMEMBER_ME"}
+                                                        label={"Remember me"}
+                                                        handleChange={handleChange}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Link to={"/"}>Forgot Password?</Link>
+                                                </div>
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <Button
+                                                    type={"submit"}
+                                                    label={isSubmitting ? "Please wait..." : "Submit"}
+                                                    isDisabled={isSubmitting || !isValid}
+                                                    classes={`w-100 btn btn-primary`}
+                                                />
+                                            </FormGroup>
+                                        </Form>
+                                    )}
+                                </Formik>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 
