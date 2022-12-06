@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import Header from "../../components/Header";
-import Sidebar from "../../components/Sidebar";
-import BackToTop from "../../components/BackToTop";
-import Home from "../home";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import BackToTop from "../components/BackToTop";
 import {Route, Routes} from "react-router-dom";
+import Home from "../Pages/home";
 
-const Dashboard = () => {
+const Layout = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
 
     const handleScroll = () => {
         let headerElement = document.querySelector("#STICKY_HEADER");
-        if (window.scrollY > 150) {
+        if (window.scrollY > 70) {
             headerElement.classList.add("fixedDiv")
         } else {
             headerElement.classList.remove("fixedDiv")
@@ -38,7 +38,9 @@ const Dashboard = () => {
     }
     return (
         <>
-            <Header handleToggleMenu={handleToggleMenu} />
+            <Header
+                handleToggleMenu={handleToggleMenu}
+            />
             <Sidebar
                 isMenuOpen={isMenuOpen}
                 handleToggleMenu={handleToggleMenu}
@@ -52,4 +54,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default Layout;

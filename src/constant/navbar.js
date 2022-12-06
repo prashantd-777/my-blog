@@ -15,9 +15,5 @@ export const NAVBAR_LIST = [
     {
         id: 4,
         name: "Write"
-    },
-    {
-        id: 5,
-        name: "Login"
     }
 ]

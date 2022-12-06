@@ -21,6 +21,11 @@ const TopBar = () => {
                                     )
                                 })}
                                 <li>
+                                    <Link to={"/login"}>
+                                        Login
+                                    </Link>
+                                </li>
+                                <li>
                                     <a>
                                         <i className='fa fa-search text-white'></i>
                                     </a>
@@ -31,26 +36,6 @@ const TopBar = () => {
                     </div>
                 </div>
             </div>
-            {/*<div className={`${s.topLeft}`}>*/}
-            {/*    <i className={`${s.topIcon} fa fa-facebook`}></i>*/}
-            {/*    <i className={`${s.topIcon} fa fa-twitter`}></i>*/}
-            {/*    <i className={`${s.topIcon} fa fa-instagram`}></i>*/}
-            {/*</div>*/}
-            {/*<div className={`${s.topCenter}`}>*/}
-            {/*    <ul className={`${s.topList}`}>*/}
-            {/*        {NAVBAR_LIST.map(item => {*/}
-            {/*            return (*/}
-            {/*                <li key={item?.id} className={`${s.topListItem}`}>*/}
-            {/*                    {item?.name}*/}
-            {/*                </li>*/}
-            {/*            )*/}
-            {/*        })}*/}
-            {/*    </ul>*/}
-            {/*</div>*/}
-            {/*<div className={`${s.topRight}`}>*/}
-            {/*    <i className={"fa fa-user"}></i>*/}
-            {/*    <i className={"fa fa-search"}></i>*/}
-            {/*</div>*/}
         </div>
     )
 }
