@@ -6,6 +6,7 @@ import {REGISTER_FORM} from "../../validation-schema";
 import FloatingInput from "../../components/forms/floating-input";
 import FormGroup from "../../components/forms/form-group";
 import Button from "../../components/Button";
+import FloatingPassword from "../../components/forms/floating-password";
 
 const INITIAL_VALUES = {
     username: '',
@@ -23,11 +24,11 @@ const Register = () => {
     }
 
     return (
-        <section>
+        <section className={`${s.sectionContainer}`}>
             <header>
                 <nav className={`navbar mb-md-5 mb-2`}>
                     <div className={"container"}>
-                        <Link className={`navbar-brand`}>
+                        <Link to={"/"} className={`navbar-brand`}>
                             <h4>Prashant</h4>
                         </Link>
                     </div>
@@ -81,7 +82,29 @@ const Register = () => {
                                                     isRequired={true}
                                                 />
 
-                                                <FloatingInput
+                                                {/*<FloatingInput*/}
+                                                {/*    id={"password"}*/}
+                                                {/*    label={"Password"}*/}
+                                                {/*    type={"password"}*/}
+                                                {/*    handleChange={handleChange}*/}
+                                                {/*    handleBlur={handleBlur}*/}
+                                                {/*    touched={touched}*/}
+                                                {/*    errors={errors}*/}
+                                                {/*    isRequired={true}*/}
+                                                {/*/>*/}
+
+                                                {/*<FloatingInput*/}
+                                                {/*    id={"confirmPassword"}*/}
+                                                {/*    label={"Confirm Password"}*/}
+                                                {/*    type={"password"}*/}
+                                                {/*    handleChange={handleChange}*/}
+                                                {/*    handleBlur={handleBlur}*/}
+                                                {/*    touched={touched}*/}
+                                                {/*    errors={errors}*/}
+                                                {/*    isRequired={true}*/}
+                                                {/*/>*/}
+
+                                                <FloatingPassword
                                                     id={"password"}
                                                     label={"Password"}
                                                     type={"password"}
@@ -92,7 +115,7 @@ const Register = () => {
                                                     isRequired={true}
                                                 />
 
-                                                <FloatingInput
+                                                <FloatingPassword
                                                     id={"confirmPassword"}
                                                     label={"Confirm Password"}
                                                     type={"password"}

@@ -7,6 +7,7 @@ import FormGroup from "../../components/forms/form-group";
 import Button from "../../components/Button";
 import {Link} from "react-router-dom";
 import Checkbox from "../../components/forms/Checkbox";
+import FloatingPassword from "../../components/forms/floating-password";
 
 const INITIAL_VALUES = {
     email: '',
@@ -22,11 +23,11 @@ const Login = () => {
     }
 
     return (
-        <section>
+        <section className={`${s.sectionContainer}`}>
             <header>
                 <nav className={`navbar mb-md-5 mb-2`}>
                     <div className={"container"}>
-                        <Link className={`navbar-brand`}>
+                        <Link to={"/"} className={`navbar-brand`}>
                             <h4>Prashant</h4>
                         </Link>
                     </div>
@@ -71,7 +72,7 @@ const Login = () => {
                                                     autofocus
                                                 />
 
-                                                <FloatingInput
+                                                <FloatingPassword
                                                     id={"password"}
                                                     label={"Password"}
                                                     type={"password"}

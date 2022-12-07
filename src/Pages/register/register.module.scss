@@ -1,11 +1,11 @@
-section {
+.sectionContainer {
   position: relative;
   background: #f8fafb;
   height: 100%;
   min-height: 100vh;
   overflow: auto;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
   .registerSection {
     position: relative;
     display: flex;
