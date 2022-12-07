@@ -1,11 +1,11 @@
-
 const Checkbox = ({
                       id,
                       label = "",
                       type = "checkbox",
-                      classes = "",
                       isChecked = false,
-                      handleChange
+                      handleChange,
+                      classes = "",
+                      labelClasses = ""
                   }) => {
     return (
         <div className={`custom-control custom-checkbox d-flex align-items-center`}>
@@ -17,7 +17,7 @@ const Checkbox = ({
                 width={16}
                 height={24}
             />
-            <label className="custom-control-label ps-2" htmlFor={id}>{label}</label>
+            <label className={`custom-control-label ps-2 ${labelClasses}`} htmlFor={id}>{label}</label>
         </div>
     )
 }

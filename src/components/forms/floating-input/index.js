@@ -9,7 +9,7 @@ const FloatingInput = ({
                            errors,
                            handleChange,
                            handleBlur,
-    isRequired = false
+                           isRequired = false
                        }) => {
     return (
         <FormGroup classes={`${s.formLabelGroupContainer}`}>
