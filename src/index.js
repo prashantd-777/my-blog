@@ -9,12 +9,16 @@ import "slick-carousel/slick/slick-theme.css";
 import "./styles/slider.scss"
 import {Provider} from "react-redux";
 import store from "./redux/store";
+import history from "./redux/store/history"
+import {ConnectedRouter} from "connected-react-router";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <React.StrictMode>
         <Provider store={store}>
-            <App/>
+            {/*<ConnectedRouter history={history}>*/}
+                <App />
+            {/*</ConnectedRouter>*/}
         </Provider>
     // </React.StrictMode>
 );

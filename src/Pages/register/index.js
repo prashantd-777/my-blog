@@ -58,8 +58,9 @@ const Register = () => {
                                               errors,
                                               isValid,
                                               handleChange,
-                                              handleBlur
-                                          }, isSubmitting) => (
+                                              handleBlur,
+                                              isSubmitting
+                                          }) => (
                                             <Form>
                                                 <FloatingInput
                                                     id={"username"}

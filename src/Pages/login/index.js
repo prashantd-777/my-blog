@@ -4,22 +4,30 @@ import {LOGIN_FORM} from "../../validation-schema";
 import FloatingInput from "../../components/forms/floating-input";
 import {LOGIN_IMG} from "../../constant/cdnAssetPath";
 import FormGroup from "../../components/forms/form-group";
-import Button from "../../components/Button";
 import {Link} from "react-router-dom";
 import Checkbox from "../../components/forms/Checkbox";
 import FloatingPassword from "../../components/forms/floating-password";
+import ThrottleButton from "../../components/ThrottleButton";
+import throttle from "../../utils/common/throttle";
+import {a__loginUser} from "../../redux/actions";
+import {connect} from "react-redux";
 
 const INITIAL_VALUES = {
     email: '',
     password: ''
 };
 
-const Login = () => {
+const Login = ({
+                   d__loginUser
+               }) => {
     const handleSubmit = (values, {setSubmitting}) => {
+        setSubmitting(true);
         setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            const { rememberMe, ...payload } = values;
+            console.log("payload is:", payload);
+            d__loginUser({...payload})
             setSubmitting(false);
-        }, 1000);
+        }, 2000);
     }
 
     return (
@@ -48,7 +56,7 @@ const Login = () => {
                                     </p>
                                     <Formik
                                         initialValues={{...INITIAL_VALUES}}
-                                        onSubmit={handleSubmit}
+                                        onSubmit={throttle(handleSubmit, 2000)}
                                         validationSchema={LOGIN_FORM}
                                     >
                                         {({
@@ -57,13 +65,15 @@ const Login = () => {
                                               errors,
                                               isValid,
                                               handleChange,
-                                              handleBlur
-                                          }, isSubmitting) => (
+                                              handleBlur,
+                                              isSubmitting
+                                          }) =>  (
                                             <Form>
                                                 <FloatingInput
                                                     id={"email"}
                                                     label={"Email Address"}
                                                     type={"email"}
+                                                    value={values?.email || ""}
                                                     handleChange={handleChange}
                                                     handleBlur={handleBlur}
                                                     touched={touched}
@@ -76,6 +86,7 @@ const Login = () => {
                                                     id={"password"}
                                                     label={"Password"}
                                                     type={"password"}
+                                                    value={values?.password || ""}
                                                     handleChange={handleChange}
                                                     handleBlur={handleBlur}
                                                     touched={touched}
@@ -87,10 +98,11 @@ const Login = () => {
                                                     classes={`d-flex justify-content-between ${s.forgotPassword}`}>
                                                     <div>
                                                         <Checkbox
-                                                            id={"REMEMBER_ME"}
+                                                            id={"rememberMe"}
                                                             label={"Remember me"}
                                                             handleChange={handleChange}
                                                             labelClasses={`${s.checkLabel}`}
+                                                            value={values.rememberMe || false}
                                                         />
                                                     </div>
                                                     <div>
@@ -99,11 +111,12 @@ const Login = () => {
                                                 </FormGroup>
 
                                                 <FormGroup>
-                                                    <Button
+                                                    <ThrottleButton
                                                         type={"submit"}
                                                         label={isSubmitting ? "Please wait..." : "Submit"}
                                                         isDisabled={isSubmitting || !isValid}
                                                         classes={`w-100 btn btn-primary`}
+                                                        isLoading={isSubmitting}
                                                     />
                                                 </FormGroup>
 
@@ -126,4 +139,20 @@ const Login = () => {
     )
 }
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        d__loginUser: data => {
+            dispatch(a__loginUser.request(data));
+        },
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login);

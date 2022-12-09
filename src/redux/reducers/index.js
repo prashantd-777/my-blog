@@ -3,7 +3,7 @@ import users from './users';
 import postReducer from "./posts";
 
 const rootReducer = combineReducers({
-    users: users,
+    users: users(),
     postReducer: postReducer()
 });
 

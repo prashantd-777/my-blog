@@ -10,7 +10,8 @@ const FloatingPassword = ({
                               errors,
                               handleChange,
                               handleBlur,
-                              isRequired = false
+                              isRequired = false,
+                              value
                           }) => {
     const [passwordShown, setPasswordShown] = useState(false);
 
@@ -31,6 +32,7 @@ const FloatingPassword = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 required={isRequired}
+                value={value}
             />
             <i className={`${passwordShown ? 'fa fa-eye-slash' : 'fa fa-eye'} ${hasError ? 'text-danger' : ''}`} onClick={togglePassword}></i>
             <label htmlFor={id}>{label}</label>

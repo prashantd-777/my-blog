@@ -1,6 +1,7 @@
 import axios from "axios";
 import moment from "moment-timezone";
 import store from "../store";
+import {GET_AUTH, isAuthenticated} from "./auth";
 
 axios.defaults.params = {};
 axios.defaults.params["timezone"] = moment.tz.guess();
@@ -56,5 +57,40 @@ export const GET = async (
     }
     return response;
 };
+
+
+export const POST = async (
+    url,
+    data = {},
+    timeout,
+    baseUrl
+) => {
+    let response;
+    try {
+        response = await api(timeout, baseUrl, {}).post(
+            url,
+            data
+        );
+    } catch (error) {
+        console.error(error);
+        if (error?.response?.status === 401) {
+            // REMOVE_AUTH();
+            window.location.href = window.location.origin + "/login";
+        }
+        return error && error.response;
+    }
+    return response;
+};
+
+export const addAuthToken = () => {
+    api().defaults.headers.common["Authorization"] = isAuthenticated()
+        ? "Bearer " + GET_AUTH()
+        : "";
+    api().defaults.headers["Authorization"] = isAuthenticated()
+        ? "Bearer " + GET_AUTH()
+        : "";
+};
+
+
 
 
