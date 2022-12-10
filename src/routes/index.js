@@ -8,12 +8,17 @@ import Dashboard from "../Pages/dashboard";
 import Login from "../Pages/login";
 import Register from "../Pages/register";
 import history from "../redux/store/history";
+import Auth from "./Auth";
 
 const routes = (
     <Router history={history}>
         <Routes>
             <Route exact path={"/"} element={<Layout/>}/>
-            <Route exact path={"/dashboard"} element={<Dashboard/>}/>
+            <Route exact path={"/dashboard"} element={
+                <Auth>
+                    <Dashboard />
+                </Auth>
+            }/>
             <Route exact path={"/login"} element={<Login/>}/>
             <Route exact path={"/register"} element={<Register/>}/>
         </Routes>

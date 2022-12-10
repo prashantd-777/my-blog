@@ -1,4 +1,4 @@
-import {FAILURE, GET_USERS, LOGIN_USER, REQUEST, SUCCESS} from "../actions/actionTypes";
+import {FAILURE, GET_USERS, LOGIN_USER, REQUEST, RESET, SUCCESS} from "../actions/actionTypes";
 import {combineReducers} from "redux";
 
 const loadingState = {
@@ -16,6 +16,19 @@ const initialObjectState = {
 }
 
 const usersReducer = () => {
+    const isAuthenticated = (state = false, payLoad) => {
+        switch (payLoad.type) {
+            case LOGIN_USER[SUCCESS]:
+                return true;
+            case LOGIN_USER[REQUEST]:
+            case LOGIN_USER[FAILURE]:
+            case LOGIN_USER[RESET]:
+                return false;
+            default:
+                return state;
+        }
+    };
+
     const getUsers = (state = initialArrayState, action) => {
         switch (action.type) {
             case GET_USERS[REQUEST]:
@@ -64,7 +77,8 @@ const usersReducer = () => {
 
     return combineReducers({
         getUsers,
-        userAuthenticate
+        userAuthenticate,
+        isAuthenticated
     })
 }
 

@@ -1,9 +1,17 @@
 import { combineReducers } from 'redux';
-import users from './users';
 import postReducer from "./posts";
+import usersReducer from "./users";
+
+// export default function createRootReducer(history) {
+//     return combineReducers({
+//         router: connectRouter(history),
+//         users: users(),
+//         postReducer: postReducer()
+//     })}
 
 const rootReducer = combineReducers({
-    users: users(),
+    // router: connectRouter(history),
+    users: usersReducer(),
     postReducer: postReducer()
 });
 

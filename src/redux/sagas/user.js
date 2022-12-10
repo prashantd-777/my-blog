@@ -2,13 +2,14 @@ import {takeLatest, call, put,} from "redux-saga/effects";
 import {LOGIN_USER, REQUEST, SUCCESS} from "../actions/actionTypes";
 import {api__userLogin} from "../services";
 import {sendPayload, sendPayloadFailure} from "./helper";
-import {replace, push} from "connected-react-router";
 import {SET_AUTH} from "../services/auth";
 
-function* handleAuthSuccess(payload = {}) {
+
+function* handleAuthSuccess() {
     console.log("auth success");
     window.location.href = window.location.origin + "/dashboard"
-    yield put(replace(`/dashboard`));
+    // yield put(push(`/dashboard`));
+    // yield call(history.push, '/dashboard');
 }
 
 function* handleUserRequest(payload) {

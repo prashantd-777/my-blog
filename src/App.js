@@ -1,7 +1,8 @@
 import './App.scss';
 import routes from "./routes";
 
-function App() {
+function App(props) {
+    console.log("props", props);
     return (
         <>
             { routes }
