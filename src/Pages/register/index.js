@@ -5,8 +5,11 @@ import {Form, Formik} from "formik";
 import {REGISTER_FORM} from "../../validation-schema";
 import FloatingInput from "../../components/forms/floating-input";
 import FormGroup from "../../components/forms/form-group";
-import Button from "../../components/Button";
 import FloatingPassword from "../../components/forms/floating-password";
+import {a__registerUser} from "../../redux/actions";
+import {connect} from "react-redux";
+import ThrottleButton from "../../components/ThrottleButton";
+import throttle from "../../utils/common/throttle";
 
 const INITIAL_VALUES = {
     username: '',
@@ -15,12 +18,17 @@ const INITIAL_VALUES = {
     confirmPassword: ''
 };
 
-const Register = () => {
+const Register = ({
+                      d__registerUser
+                  }) => {
     const handleSubmit = (values, {setSubmitting}) => {
+        setSubmitting(true);
         setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            const { confirmPassword, ...payload } = values;
+            console.log("payload is:", payload);
+            d__registerUser({...payload})
             setSubmitting(false);
-        }, 1000);
+        }, 2000);
     }
 
     return (
@@ -49,7 +57,7 @@ const Register = () => {
                                     </p>
                                     <Formik
                                         initialValues={{...INITIAL_VALUES}}
-                                        onSubmit={handleSubmit}
+                                        onSubmit={throttle(handleSubmit, 2000)}
                                         validationSchema={REGISTER_FORM}
                                     >
                                         {({
@@ -83,28 +91,6 @@ const Register = () => {
                                                     isRequired={true}
                                                 />
 
-                                                {/*<FloatingInput*/}
-                                                {/*    id={"password"}*/}
-                                                {/*    label={"Password"}*/}
-                                                {/*    type={"password"}*/}
-                                                {/*    handleChange={handleChange}*/}
-                                                {/*    handleBlur={handleBlur}*/}
-                                                {/*    touched={touched}*/}
-                                                {/*    errors={errors}*/}
-                                                {/*    isRequired={true}*/}
-                                                {/*/>*/}
-
-                                                {/*<FloatingInput*/}
-                                                {/*    id={"confirmPassword"}*/}
-                                                {/*    label={"Confirm Password"}*/}
-                                                {/*    type={"password"}*/}
-                                                {/*    handleChange={handleChange}*/}
-                                                {/*    handleBlur={handleBlur}*/}
-                                                {/*    touched={touched}*/}
-                                                {/*    errors={errors}*/}
-                                                {/*    isRequired={true}*/}
-                                                {/*/>*/}
-
                                                 <FloatingPassword
                                                     id={"password"}
                                                     label={"Password"}
@@ -128,11 +114,12 @@ const Register = () => {
                                                 />
 
                                                 <FormGroup>
-                                                    <Button
+                                                    <ThrottleButton
                                                         type={"submit"}
                                                         label={isSubmitting ? "Please wait..." : "Submit"}
                                                         isDisabled={isSubmitting || !isValid}
                                                         classes={`w-100 btn btn-primary`}
+                                                        isLoading={isSubmitting}
                                                     />
                                                 </FormGroup>
 
@@ -155,4 +142,21 @@ const Register = () => {
     )
 }
 
-export default Register;
+
+const mapStateToProps = state => {
+    return {
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        d__registerUser: data => {
+            dispatch(a__registerUser.request(data));
+        },
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Register);

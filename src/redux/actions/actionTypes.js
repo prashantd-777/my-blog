@@ -26,3 +26,4 @@ export const createFlagTypes = base => {
 export const GET_POSTS = createRequestTypes("GET_POSTS");
 export const GET_USERS = createRequestTypes("GET_USERS");
 export const LOGIN_USER = createRequestTypes("LOGIN_USER");
+export const REGISTER_USER = createRequestTypes("REGISTER_USER");

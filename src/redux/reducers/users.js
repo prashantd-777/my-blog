@@ -1,4 +1,4 @@
-import {FAILURE, GET_USERS, LOGIN_USER, REQUEST, RESET, SUCCESS} from "../actions/actionTypes";
+import {FAILURE, GET_USERS, LOGIN_USER, REGISTER_USER, REQUEST, RESET, SUCCESS} from "../actions/actionTypes";
 import {combineReducers} from "redux";
 
 const loadingState = {
@@ -19,10 +19,14 @@ const usersReducer = () => {
     const isAuthenticated = (state = false, payLoad) => {
         switch (payLoad.type) {
             case LOGIN_USER[SUCCESS]:
+            case REGISTER_USER[SUCCESS]:
                 return true;
             case LOGIN_USER[REQUEST]:
+            case REGISTER_USER[REQUEST]:
             case LOGIN_USER[FAILURE]:
+            case REGISTER_USER[FAILURE]:
             case LOGIN_USER[RESET]:
+            case REGISTER_USER[RESET]:
                 return false;
             default:
                 return state;
