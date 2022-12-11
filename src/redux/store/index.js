@@ -1,23 +1,36 @@
-import {createStore, applyMiddleware, compose, combineReducers} from "redux";
 import createSagaMiddleware from "redux-saga";
+import { createStore, applyMiddleware, compose } from "redux";
+import { createBrowserHistory } from "history";
 import rootReducer from "../reducers";
+import { createLogger } from "redux-logger";
 import rootSaga from "../sagas";
-import {createBrowserHistory, createMemoryHistory} from "history";
-import createRootReducer from "../reducers";
 
-export const history = createMemoryHistory();
+// Store
+const middleware = store => next => action => {
+    next(action);
+};
 
+export const history = createBrowserHistory();
 
+export default function configureStore(initialState = {}) {
+    const sagaMiddleware = createSagaMiddleware({
+        onError: error => {
+            console.log("error", error);
+        }
+    });
+    const store = createStore(
+        rootReducer,
+        initialState,
+        compose(
+            applyMiddleware(
+                sagaMiddleware,
+                middleware,
+                createLogger({ collapsed: true })
+            )
+        )
+    );
 
-const sagaMiddleware = createSagaMiddleware();
-const composeEnhancers = window?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const history = createBrowserHistory()
+    sagaMiddleware.run(rootSaga);
 
-const store = createStore(
-    rootReducer,
-    // createRootReducer(history),
-    composeEnhancers(applyMiddleware(sagaMiddleware))
-);
-sagaMiddleware.run(rootSaga);
-
-export default store;
+    return store;
+}

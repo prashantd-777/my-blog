@@ -10,7 +10,6 @@ import usersReducer from "./users";
 //     })}
 
 const rootReducer = combineReducers({
-    // router: connectRouter(history),
     users: usersReducer(),
     postReducer: postReducer()
 });

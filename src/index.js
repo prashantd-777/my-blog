@@ -8,19 +8,18 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles/slider.scss"
 import {Provider} from "react-redux";
-import store from "./redux/store";
-import {ConnectedRouter} from "connected-react-router";
-import { history } from "./redux/store";
+import {  BrowserRouter as Router,
+} from "react-router-dom";
+import configureStore, {history} from "./redux/store";
 
+const store = configureStore();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <React.StrictMode>
         <Provider store={store}>
-            {/*<ConnectedRouter history={history}>*/}
+            <Router history={history}>
                 <App />
-            {/*</ConnectedRouter>*/}
+            </Router>
         </Provider>
-    // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
