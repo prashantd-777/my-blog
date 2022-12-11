@@ -9,18 +9,21 @@ import Login from "../Pages/login";
 import Register from "../Pages/register";
 import history from "../redux/store/history";
 import Auth from "./Auth";
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 const routes = (
     <Router history={history}>
         <Routes>
-            <Route exact path={"/"} element={<Layout/>}/>
-            <Route exact path={"/dashboard"} element={
-                <Auth>
-                    <Dashboard />
-                </Auth>
-            }/>
-            <Route exact path={"/login"} element={<Login/>}/>
-            <Route exact path={"/register"} element={<Register/>}/>
+            <Route element={<ProtectedRoute />}>
+                <Route path="/" element={<Layout />} />
+                <Route path="dashboard" element={<Dashboard />} />
+            </Route>
+            <Route element={<PublicRoute />}>
+                <Route exact path={"/login"} element={<Login/>}/>
+                <Route exact path={"/register"} element={<Register/>}/>
+            </Route>
         </Routes>
     </Router>
 )
