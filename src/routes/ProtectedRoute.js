@@ -1,7 +1,6 @@
 import {Navigate, Outlet} from "react-router-dom";
 import {isAuthenticated} from "../redux/services/auth";
 
-
 const ProtectedRoute = ({
                             redirectPath = '/login',
                             children,

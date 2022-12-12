@@ -18,6 +18,7 @@ const routes = (
             <Route path="dashboard" element={<Dashboard/>}/>
         </Route>
         <Route element={<PublicRoute/>}>
+            <Route exact path={"/home"} element={<Layout/>}/>
             <Route exact path={"/login"} element={<Login/>}/>
             <Route exact path={"/register"} element={<Register/>}/>
         </Route>

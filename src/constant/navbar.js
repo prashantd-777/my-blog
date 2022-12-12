@@ -1,19 +1,23 @@
 export const NAVBAR_LIST = [
     {
         id: 1,
-        name: "Home"
+        name: "Home",
+        link: "/"
     },
     {
         id: 2,
-        name: "About"
+        name: "About",
+        link: "/"
     },
 
     {
         id: 3,
-        name: "Contact"
+        name: "Contact",
+        link: "/"
     },
     {
         id: 4,
-        name: "Write"
+        name: "Write",
+        link: "/"
     }
 ]

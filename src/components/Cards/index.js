@@ -5,8 +5,7 @@ const Cards = ({
                    title = "",
                    desc = "",
                    date,
-                   count = 0,
-    addClass=""
+                   count = 0, addClass=""
                }) => {
     return (
         <div className={`${s.cardContainer} ${addClass}`}>
