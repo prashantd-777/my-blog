@@ -1,6 +1,7 @@
 import s from "./Header.module.scss";
 import {NAVBAR_LIST} from "../../constant/navbar";
 import {Link} from "react-router-dom";
+import {isAuthenticated} from "../../redux/services/auth";
 
 const Header = ({
                     handleToggleMenu
@@ -24,9 +25,16 @@ const Header = ({
                                     )
                                 })}
                                 <li>
-                                    <Link to={"/login"}>
-                                        Login
-                                    </Link>
+                                    {isAuthenticated() ? (
+                                        <Link to={"/login"}>
+                                            User
+                                        </Link>
+                                    ): (
+                                        <Link to={"/login"}>
+                                            Login
+                                        </Link>
+                                    )}
+
                                 </li>
                                 <li>
                                     <a>

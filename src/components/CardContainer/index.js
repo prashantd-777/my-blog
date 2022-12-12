@@ -14,7 +14,6 @@ const CardContainer = ({
     isLoading
     } = postsData;
     const timezone = getCurrentTimezone();
-    console.log("dwecdw", timezone);
     return (
         <div className={"container"}>
             <div className={"row w-100 d-flex flex-wrap justify-content-between flex-row"}>
