@@ -1,39 +1,42 @@
-import React, {useEffect, useRef} from "react";
+import React, {useState} from "react";
 import s from "./Sidebar.module.scss";
+import Button from "../Button";
+import {Link} from "react-router-dom";
 
-const Sidebar = ({
-                     isMenuOpen = false,
-                     handleToggleMenu,
-                     handleLinkClick
-                 }) => {
+const Sidebar = () => {
+    const [show, setShow] = useState(false);
 
-    const boxRef = useRef(null);
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (boxRef.current && !boxRef.current.contains(event.target) && isMenuOpen) {
-                handleToggleMenu();
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isMenuOpen])
+    const toggleShow = () => {
+        setShow(!show);
+    }
 
     return (
-        <div className={`${s.sideMenuContainer} ${isMenuOpen === true ? ` ${s.active}` : ""}`} ref={boxRef}>
-            <div className="overlay"></div>
-            <div className={`inner-wrapper ${s.innerWrapper}`}>
-                <span className={`text-white ${s.btnClose}`} onClick={handleToggleMenu}>
-                    <i className='fa fa-close text-white fs-5' />
-                </span>
-                <div>
-                    Blog Sidebar
-                </div>
-            </div>
-        </div>
+        <aside className={`${s.sideMenuContainer}`}>
+            <Button
+                label={"Click"}
+                classes={`${s.buttonContainer} ${show ? s.extendButton : s.defaultButton}`}
+                onClick={toggleShow}
+            />
+
+            <ul className={`${s.listContainer} ${show ? s.extendListSize : s.defaultListSize}`}>
+                <li>
+                    <Link to={'/'}>
+                        <i className={`fa fa-home me-2`}></i>
+                        <span>
+                            Home
+                        </span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to={'/'}>
+                        <i className={`fa fa-user me-2`}></i>
+                        <span>
+                            Profile
+                        </span>
+                    </Link>
+                </li>
+            </ul>
+        </aside>
     );
 }
 

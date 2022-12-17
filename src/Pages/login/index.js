@@ -5,7 +5,7 @@ import FloatingInput from "../../components/forms/floating-input";
 import {LOGIN_IMG} from "../../constant/cdnAssetPath";
 import FormGroup from "../../components/forms/form-group";
 import {Link} from "react-router-dom";
-import Checkbox from "../../components/forms/Checkbox";
+import Checkbox from "../../components/forms/checkbox";
 import FloatingPassword from "../../components/forms/floating-password";
 import ThrottleButton from "../../components/ThrottleButton";
 import throttle from "../../utils/common/throttle";

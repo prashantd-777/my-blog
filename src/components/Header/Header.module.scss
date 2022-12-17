@@ -5,7 +5,6 @@
   -webkit-box-shadow: 0 5px 15px rgb(0 0 0 / 8%);
   box-shadow: 0 5px 15px rgb(0 0 0 / 8%);
   z-index: 1020;
-  //position: relative;
   transition: position 300ms linear;
 
 
@@ -48,16 +47,16 @@
       position: static;
       display: block;
 
-      ul {
+      .navList {
         display: flex;
         margin: 0;
         padding: 0;
         list-style: none;
 
-        li {
-          margin: 0 20px;
+        .listRow {
+          margin: 0 15px;
 
-          a {
+          .listLink {
             color: #fff;
             min-height: 60px;
             font-family: inherit;
@@ -72,13 +71,13 @@
             text-decoration: none;
           }
 
-          a:hover {
+          .listLink:hover {
             color: #fff;
             text-decoration: none;
           }
         }
 
-        li:hover {
+        .listRow:hover {
           text-decoration: underline;
         }
       }

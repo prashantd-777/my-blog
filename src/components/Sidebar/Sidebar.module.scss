@@ -3,77 +3,110 @@
 $themeColor: #fff;
 
 .sideMenuContainer {
-  width: 350px;
   position: fixed;
   left: 0;
-  top: 0;
-  z-index: 1610;
+  background-color: var(--black);
+  width: 3.5rem;
   height: 100vh;
-  background: #222;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-  -webkit-transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
-  -o-transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
-  -moz-transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
-  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out, -o-transform .5s ease-in-out;
-  overflow: hidden;
-  &.active {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  .innerWrapper {
-    padding: 4.5rem 1rem;
-    height: 100%;
-    position: relative;
-    overflow-y: auto;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
+  border-radius: 0 30px 30px 0;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  .buttonContainer {
+    background-color: var(--black);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin: 0;
+    cursor: pointer;
     display: flex;
-    color: #fff;
-    text-align: left;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
   }
 
-  .sideNav {
-    .navbarNav {
+  .defaultButton::before {
+    top: 1rem;
+    transform: rotate(0deg);
+  }
+
+  .defaultButton::after {
+    top: 1.5rem;
+    transform: rotate(0deg);
+  }
+
+  .extendButton::before {
+    transform: rotate(135deg);
+  }
+
+  .extendButton::after {
+    transform: rotate(-135deg);
+  }
+
+  .buttonContainer::before, .buttonContainer::after {
+    content: "";
+    background-color: var(--white);
+    height: 2px;
+    width: 1rem;
+    position: absolute;
+    transition: all 0.3s ease 0s;
+  }
+
+  .listContainer {
+    color: var(--white);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: var(--black);
+    padding: 2rem 0;
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    transition: all 0.5s ease 0s;
+    border-radius: 0 30px 30px 0;
+    li {
+      width: 100%;
+    }
+
+    li:hover {
+      border-right: 4px solid var(--white);
+    }
+    a {
+      text-decoration: none;
+      color: var(--white);
+      width: 100%;
+      padding: 1rem 0 1rem 1rem;
+      cursor: pointer;
       display: flex;
-      flex-direction: column;
-      padding-left: 0;
-      margin-bottom: 0;
-      list-style: none;
-      .navItem {
-        transform: translateY(0);
-        opacity: 1;
-        display: block;
-        margin: 8px 0;
-        a {
-          cursor: pointer;
-          text-decoration: none;
-        }
+      span {
+        overflow: hidden;
+        transition: all 0.3s ease 0s;
       }
     }
   }
 
-  .btnClose {
-    position: absolute;
-    height: 35px;
-    width: 35px;
-    -webkit-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.15);
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
-    margin-right: 1.5rem;
-    margin-top: 0;
-    right: 10px;
-    top: 10px;
-    z-index: 12;
-    cursor: pointer;
+  .defaultListSize {
+    width: 3.5rem;
+    a span {
+      width: 0;
+      margin-left: 0;
+    }
+  }
+
+  .extendListSize {
+    width: 12rem;
+    a span {
+      width: 100%;
+      margin-left: 1.5rem;
+    }
   }
 }

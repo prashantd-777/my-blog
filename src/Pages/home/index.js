@@ -8,14 +8,12 @@ import {a__fetchPosts} from "../../redux/actions";
 import React, {useEffect, useState} from "react";
 import {s__getPosts} from "../../redux/selectors";
 import Header from "../../components/Header";
-import Sidebar from "../../components/Sidebar";
 import BackToTop from "../../components/BackToTop";
 
 const Home = ({
                   d__fetchPosts,
                   postsData = {}
               }) => {
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
@@ -43,9 +41,6 @@ const Home = ({
         setIsMenuOpen(!isMenuOpen);
     }
 
-    const handleLinkClick = () => {
-        setIsMenuOpen(false);
-    }
     useEffect(() => {
         d__fetchPosts()
     }, [])
@@ -54,11 +49,6 @@ const Home = ({
         <>
             <Header
                 handleToggleMenu={handleToggleMenu}
-            />
-            <Sidebar
-                isMenuOpen={isMenuOpen}
-                handleToggleMenu={handleToggleMenu}
-                handleLinkClick={handleLinkClick}
             />
             <BackToTop />
             <section className={`${s.homeContainer}`}>
