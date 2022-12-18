@@ -1,8 +1,8 @@
 
 .footerContainer {
-  background-color: #c4183c;
-  background-image: linear-gradient(to right, #c4183c, #4f37ac);
-  padding: 50px 0;
+  background-color: var(--black);
+  //background-image: linear-gradient(to right, #c4183c, #4f37ac);
+  padding: 10px 0;
   text-align: center;
   .copyRight {
     color: #fff;

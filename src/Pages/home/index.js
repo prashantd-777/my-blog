@@ -9,6 +9,7 @@ import React, {useEffect, useState} from "react";
 import {s__getPosts} from "../../redux/selectors";
 import Header from "../../components/Header";
 import BackToTop from "../../components/BackToTop";
+import HomeHeader from "../../components/HomeHeader";
 
 const Home = ({
                   d__fetchPosts,
@@ -49,7 +50,9 @@ const Home = ({
         <>
             <Header
                 handleToggleMenu={handleToggleMenu}
-            />
+            >
+                <HomeHeader />
+            </Header>
             <BackToTop />
             <section className={`${s.homeContainer}`}>
                 <Carousel />
