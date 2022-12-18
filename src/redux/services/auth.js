@@ -1,5 +1,5 @@
 import {addAuthToken} from "./helper";
-import {getCookie, setCookie} from "../../utils/utm";
+import {getCookie, remCookie, setCookie} from "../../utils/utm";
 
 const tokenKey = "tk";
 
@@ -29,5 +29,12 @@ export const GET_AUTH = () => {
 export const isAuthenticated = () => {
     return !!GET_AUTH();
 };
+
+export const REMOVE_AUTH = () => {
+    sessionStorage.clear();
+    remCookie(tokenKey);
+};
+
+
 
 

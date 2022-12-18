@@ -1,4 +1,4 @@
-import {ALERT_CLOSE, FAILURE, GET_POSTS, LOGIN_USER, REGISTER_USER, REQUEST, SUCCESS} from "./actionTypes";
+import {ALERT_CLOSE, FAILURE, GET_POSTS, LOGIN_USER, LOGOUT, REGISTER_USER, REQUEST, SUCCESS} from "./actionTypes";
 
 export const action = (type, payload = {}) => {
     return { type, ...payload };
@@ -33,3 +33,11 @@ export const a__registerUser = {
         action(REGISTER_USER[FAILURE], { login, error }),
     errorClose: (flg) => action(ALERT_CLOSE, { flg }),
 };
+
+export const a__logout = {
+    request: (data) => action(LOGOUT[REQUEST], { data }),
+    success: (data, response) => action(LOGOUT[SUCCESS], { data, response }),
+    failure: (logout, error) => action(LOGOUT[FAILURE], { logout, error }),
+    errorClose: (flg) => action(ALERT_CLOSE, { flg }),
+};
+

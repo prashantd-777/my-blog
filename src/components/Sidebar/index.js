@@ -20,7 +20,7 @@ const Sidebar = () => {
 
             <ul className={`${s.listContainer} ${show ? s.extendListSize : s.defaultListSize}`}>
                 <li>
-                    <Link to={'/'}>
+                    <Link to={'/'} title={"Home"}>
                         <i className={`fa fa-home me-2`}></i>
                         <span>
                             Home
@@ -28,10 +28,18 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to={'/'}>
+                    <Link to={'/user/profile'} title={"Profile"}>
                         <i className={`fa fa-user me-2`}></i>
                         <span>
                             Profile
+                        </span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to={'/logout'} title={"Logout"}>
+                        <i className={`fa fa-gear me-2`}></i>
+                        <span>
+                            Logout
                         </span>
                     </Link>
                 </li>

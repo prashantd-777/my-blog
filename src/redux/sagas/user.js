@@ -1,9 +1,8 @@
 import {takeLatest, call, put,} from "redux-saga/effects";
-import {LOGIN_USER, REGISTER_USER, REQUEST, SUCCESS} from "../actions/actionTypes";
+import {LOGIN_USER, LOGOUT, REGISTER_USER, REQUEST, SUCCESS} from "../actions/actionTypes";
 import {api__userLogin, api__userRegister} from "../services";
 import {sendPayload, sendPayloadFailure} from "./helper";
-import {SET_AUTH} from "../services/auth";
-
+import {REMOVE_AUTH, SET_AUTH} from "../services/auth";
 
 function* handleAuthSuccess() {
     console.log("auth success");
@@ -32,6 +31,18 @@ function* handleUserRegisterRequest(payload) {
     }
 }
 
+function* handleLogoutRequest(payload) {
+    try {
+        REMOVE_AUTH();
+        yield put({ type: LOGOUT[SUCCESS] });
+        window.location.href = window.location.origin + "/login"
+
+        // yield put(push("/"));
+    } catch (e) {
+        yield sendPayloadFailure(e, LOGOUT);
+    }
+}
+
 export const sagas = {
     watchUserLogin: takeLatest(
         LOGIN_USER[REQUEST],
@@ -48,5 +59,9 @@ export const sagas = {
     watchUserRegisterSuccess: takeLatest(
         REGISTER_USER[SUCCESS],
         handleAuthSuccess
+    ),
+    watchUserLogout: takeLatest(
+        LOGOUT[REQUEST],
+        handleLogoutRequest
     ),
 }
